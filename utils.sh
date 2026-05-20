@@ -3,7 +3,7 @@
 # ======================================
 #  Constants
 # ======================================
-theme='Railway'
+theme='Railway-Dark'
 
 theme_dir="$HOME/.themes"
 
@@ -40,7 +40,7 @@ extra_files=(
 #  Operations
 # ======================================
 compile_sass () {
-    sassc -t "$sass_style" "$sass_input" > "$sass_output"
+    sass --style="$sass_style" "$sass_input":"$sass_output"
 }
 
 restart_theme () {
@@ -86,7 +86,7 @@ install_theme () {
 }
 
 package_theme () {
-    if type sassc; then
+    if type sass; then
         (cd "$theme/cinnamon/" && compile_sass)
     fi
 
