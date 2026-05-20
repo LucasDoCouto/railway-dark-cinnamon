@@ -8,7 +8,8 @@ The goal of this fork is to bring full **Dark Mode** integration (converting lig
 
 ### Current State:
 * **Grouped Window List:** Fully updated and fixed. Button paddings and minimum widths (`min-width`) have been adjusted so active application icons no longer look squeezed or clipped at the borders.
-* **Menu Applets:** The default modern Cinnamon Menu is **not fully functional yet**. I am currently using the **Stark Menu** applet instead of Cinnamon Menu.
+* **Menu Applets:** The default modern Cinnamon Menu is now fully working.
+* **Other Applets:** If you experience any problems with other applets, please let me know by opening an issue.
 
 ## Installation
 #### From source

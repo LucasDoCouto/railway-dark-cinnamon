@@ -1,122 +1,214 @@
-/* ======================================
- * ! App menu applet
- * ====================================== */
+/* ===================================================================
+ * ! App menu applet - Modernized Fork for Modern Cinnamon (2026)
+ * =================================================================== */
 
-@if variable-exists(menu-style)
-	and $menu-style == "common" {
-	.menu-background.menu {
-		.popup-menu-content {
-			padding: 0 0 6px;
-		}
+/* --- 1. Lógica Condicional de Estilo (Preservada do Original) --- */
+@if variable-exists(menu-style) and $menu-style == "common" {
+    .menu-background.menu, .appmenu-background {
+        .popup-menu-content {
+            padding: 0 0 6px;
+        }
 
-		.menu-applications-outer-box { spacing: 0; }
+        .menu-applications-outer-box, .appmenu-categories-applications-box { 
+            spacing: 0; 
+        }
 
-		.menu-favorites-box { padding: 6px; }
+        .menu-favorites-box, .appmenu-sidebar { 
+            padding: 6px; 
+        }
 
-		.menu-favorites-button:hover {
-			border-image: url("img/containers/hover.svg") 3;
-		}
+        .menu-favorites-button:hover, .appmenu-sidebar-button:hover {
+            border-image: url("img/containers/hover.svg") 3;
+        }
 
-		.menu-selected-app-title {
-			color: $text-primary;
-		}
+        .menu-selected-app-title {
+            color: $text-primary;
+        }
 
-		.menu-selected-app-description {
-			color: $text-secondary;
-		}
-	}
+        .menu-selected-app-description {
+            color: $text-secondary;
+        }
+    }
 }
 @else {
-	.menu-background.menu {
-		margin: 0;
+    .menu-background.menu, .appmenu-background {
+        margin: 0;
 
-		.popup-menu-content {
-			padding: 0;
-			border-image: none;
-		}
-	}
+        .popup-menu-content {
+            padding: 0;
+            border-image: none;
+        }
+    }
 }
 
-
-.menu-favorites-box {
-	padding: 0;
+/* --- 2. Barra Lateral e Favoritos (Suporte ao Novo Layout/Stark Menu) --- */
+.menu-favorites-box, .appmenu-sidebar {
+    padding: 0;
+    /* Injeta o visual clássico do Railway na nova barra lateral se necessário */
+    background-color: transparent; 
+    border-image: none;
+    spacing: 5px;
 }
 
-.menu-favorites-button {
-	padding: 10px 12px;
-	color: $text-primary-contrast;
+.menu-favorites-button, .appmenu-sidebar-button {
+    padding: 10px 12px;
+    color: $text-primary-contrast;
+    spacing: 8px;
+    border-radius: 0; /* Respeita o visual quadrado de bordas em SVG do tema */
 
-	&:hover {
-		border-image: url("img/containers/hover-transparent.svg") 8;
-		color: $text-primary-invert;
-	}
+    &:hover {
+        border-image: url("img/containers/hover-transparent.svg") 8;
+        color: $text-primary-invert;
+    }
 }
 
-.menu-categories-box {
-	padding: 6px 1px;
-	border-image: url("img/containers/menu-categories.svg") 8;
+/* --- 3. Caixa de Categorias --- */
+.menu-categories-box, .appmenu-categories-applications-box {
+    padding: 6px 1px;
+    border-image: url("img/containers/menu-categories.svg") 8;
 }
 
-.menu-applications-outer-box {
-	spacing: 7px;
+/* --- 4. Caixa Externa de Aplicativos --- */
+.menu-applications-outer-box, .appmenu-applications-box {
+    spacing: 7px;
 
-	.menu-applications-inner-box {
-		padding: 6px 0;
-	}
+    .menu-applications-inner-box {
+        padding: 6px 0;
+    }
 
-	.menu-applications-scrollbox {
-		padding: 0 1px 1px 0;
-		border-image: url("img/containers/menu-apps.svg") 8;
-	}
+    /* Aplica a borda customizada do contêiner nas caixas de rolagem modernas */
+    .menu-applications-scrollbox, StScrollView {
+        padding: 0 1px 1px 0;
+        border-image: url("img/containers/menu-apps.svg") 8;
+    }
 }
 
+/* --- 5. Botões de Aplicativos e Categorias (Mesmo Visual para Ambos os Menus) --- */
 .menu-application-button,
-.menu-category-button {
-	padding: 8px 15px;
-	spacing: 8px;
+.menu-category-button,
+.appmenu-application-button,
+.appmenu-category-button {
+    padding: 8px 15px;
+    spacing: 8px;
+    color: $text-primary-contrast; 
+    
+    /* TRAVA DA FONTE: Garante tamanho e peso idênticos no estado padrão */
+    font-size: 1em !important;
+    font-weight: normal !important;
 
-	&-selected, &-selected:highlighted {
-		padding: 8px 15px;
-		spacing: 8px;
-		border-image: url("img/containers/hover-popup.svg") 10;
-		color: $text-primary;
-	}
+    &:hover, &-selected, &-selected:highlighted, &:highlighted {
+        /* Mantém exatamente o mesmo tamanho e peso quando o mouse passa por cima */
+        font-size: 1em !important;
+        font-weight: normal !important;
+    }
 
-	&-greyed {
-		padding: 8px 15px;
-		spacing: 8px;
-		color: $text-disabled;
-	}
+    &-selected, &-selected:highlighted {
+        padding: 8px 15px;
+        spacing: 8px;
+        border-image: url("img/containers/hover-popup.svg") 10;
+        color: $text-primary;
+        background-color: transparent; 
+    }
 
-	&:highlighted {
-		border-image: url("img/containers/hover-popup__highlighted.svg") 10;
-	}
+    /* Adicionado o hover explícito que estava faltando no original */
+    &:hover {
+        border-image: url("img/containers/hover-popup.svg") 10;
+        color: $text-primary;
+    }
 
-	&-label { padding: 0px; }
+    &-greyed {
+        padding: 8px 15px;
+        spacing: 8px;
+        color: $text-disabled;
+        font-style: italic;
+        StIcon { opacity: 0.5; }
+    }
+
+    &:highlighted {
+        border-image: url("img/containers/hover-popup__highlighted.svg") 10;
+    }
+
+    /* Aplica a trava diretamente nos elementos internos de texto se o Cinnamon tentar herdar errado */
+    StLabel, 
+    .menu-application-button-label, 
+    .appmenu-application-button-label, 
+    .appmenu-category-button-label { 
+        padding: 0px; 
+        font-size: 1em !important;
+        font-weight: normal !important;
+    }
+    
+    /* Garante o tamanho estável da descrição tanto parado quanto no hover do botão */
+    .appmenu-application-button-description {
+        color: $text-secondary-contrast;
+        font-size: 0.85em !important; 
+        font-weight: normal !important;
+    }
+
+    /* Trava a descrição quando o botão recebe hover ou está selecionado */
+    &:hover .appmenu-application-button-description,
+    &-selected .appmenu-application-button-description,
+    &-selected:highlighted .appmenu-application-button-description {
+        font-size: 0.85em !important;
+        font-weight: normal !important;
+    }
 }
 
-
+/* --- 6. Descrição do Aplicativo Selecionado (Rodapé do Menu) --- */
 .menu-selected-app-box {
-	margin: 6px 6px 0;
-	text-align: right;
+    margin: 6px 6px 0;
+    text-align: right;
 }
 
 .menu-selected-app-title {
-	color: $text-primary-contrast;
+    color: $text-primary-contrast;
 }
 
 .menu-selected-app-description {
-	max-width: 150px;
-	color: $text-secondary-contrast;
+    max-width: 150px;
+    color: $text-secondary-contrast;
 }
 
-.menu-search-box {
-	padding: 11px;
-	border-image: url("img/containers/menu-search.svg") 10;
+/* --- 7. Campo de Busca (Search Box) --- */
+.menu-search-box, .appmenu-search-box {
+    padding: 11px;
+    spacing: 10px;
+    border-image: url("img/containers/menu-search.svg") 10;
 }
 
-/* The right click menu */
-.menu-applications-inner-box StScrollView {
-	border-image: url("img/containers/popup-submenu.svg") 10;
-	padding: 1em .2em;
+/* --- 8. Botões do Sistema da Barra Lateral (Desligar, Bloquear, Sair) --- */
+.appmenu-system-box {
+    spacing: 10px;
+    padding: 10px;
+}
+
+.appmenu-system-button {
+    padding: 8.4px;
+    border-image: none;
+    border-radius: 9999px; /* Mantém os botões redondos padrões do Cinnamon */
+    background-color: rgba($text-primary-contrast, 0.1); 
+    color: $text-primary-contrast;
+
+    &:hover {
+        background-color: rgba($text-primary-contrast, 0.2);
+    }
+
+    &-lock:hover, &-logout:hover {
+        border-image: url("img/containers/hover-transparent.svg") 8;
+    }
+
+    &-shutdown {
+        color: white;
+        background-color: #c01c28; /* Vermelho padrão de segurança */
+        &:hover {
+            background-color: #d61f2d;
+        }
+    }
+}
+
+/* --- 9. Menu de Contexto (Clique Direito) --- */
+.menu-applications-inner-box StScrollView,
+.appmenu-background .popup-menu-content StScrollView {
+    border-image: url("img/containers/popup-submenu.svg") 10;
+    padding: 1em .2em;
 }
