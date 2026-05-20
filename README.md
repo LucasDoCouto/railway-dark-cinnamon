@@ -14,12 +14,6 @@ The goal of this fork is to bring full **Dark Mode** integration (converting lig
 #### From source
 Run `make install` or move the `Railway-Dark` folder into your `~/.themes` folder.
 
-#### Cinnamon Spices
-Download it from [here][spices] or search for "Railway-Dark" in your Cinnamon theme settings.
-
-### Color customization
-You can get some prebuilt **color variations** from [the repository archive][archive]. You'll have to install them manually by copying the themes into your `~/.themes` folder.
-
 To **create a custom color** variation of the theme you need to install it [from source][repo] in order to get the original code and scripts.
 Once you have it run `make color=COLOR`, where `COLOR` is the hexadecimal color without `#`. For example `make color=FF00FF`. Then run `make install`.
 
