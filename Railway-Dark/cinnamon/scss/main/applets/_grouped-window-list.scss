@@ -44,3 +44,29 @@
 .grouped-window-list-item-demands-attention {
 	border-image: url("img/panel/window-list__atention.svg") 8;
 }
+
+
+
+/* 1. Remove os cantos arredondados do menu flutuante da miniatura */
+.grouped-window-list-thumbnail-menu {
+    border-radius: 0px !important;
+    background-color: $window-background;
+    color: $text-primary !important;
+	border: 5px solid $window-border;
+	margin-bottom: 5px;
+
+    &:hover, &:focus {
+        border-radius: 0px !important;
+        background-color: $window-background;
+    }
+
+    /* ESSA É A CAIXA INTERNA: Zera os cantos e o fundo cinza no hover */
+    .item-box {
+        border-radius: 0px !important;
+		
+        &:hover, &:selected, &:focus {
+            border-radius: 0px !important;
+			background-color: $window-secondary;
+        }
+    }
+}

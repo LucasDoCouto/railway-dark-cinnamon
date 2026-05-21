@@ -126,7 +126,7 @@ StScrollBar {
   width: 30px;
   height: 15px;
   background-image: url("img/controls/switch.svg");
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: #2c2c2c;
   background-position: 0px 0px; }
   .toggle-switch:checked, .toggle-switch-us:checked, .toggle-switch-intl:checked {
     background-position: 15px 0px;
@@ -908,6 +908,16 @@ StScrollBar {
 #about-website:hover StLabel {
   text-decoration: underline; }
 
+/* ===================================================================
+ * ! Correção do ícone de espiar senha gigante (Polkit / Root Prompt)
+ * =================================================================== */
+.prompt-dialog-password-entry StIcon.peek-password {
+  icon-size: 16px !important;
+  width: 16px !important;
+  height: 16px !important;
+  padding: 0px !important;
+  margin: 0px !important; }
+
 /* ======================================
  * ! On-screen Keyboard
  * ====================================== */
@@ -1179,6 +1189,23 @@ StScrollBar {
 
 .grouped-window-list-item-demands-attention {
   border-image: url("img/panel/window-list__atention.svg") 8; }
+
+/* 1. Remove os cantos arredondados do menu flutuante da miniatura */
+.grouped-window-list-thumbnail-menu {
+  border-radius: 0px !important;
+  background-color: #171717;
+  color: rgba(255, 255, 255, 0.75) !important;
+  border: 5px solid #202020;
+  margin-bottom: 5px;
+  /* ESSA É A CAIXA INTERNA: Zera os cantos e o fundo cinza no hover */ }
+  .grouped-window-list-thumbnail-menu:hover, .grouped-window-list-thumbnail-menu:focus {
+    border-radius: 0px !important;
+    background-color: #171717; }
+  .grouped-window-list-thumbnail-menu .item-box {
+    border-radius: 0px !important; }
+    .grouped-window-list-thumbnail-menu .item-box:hover, .grouped-window-list-thumbnail-menu .item-box:selected, .grouped-window-list-thumbnail-menu .item-box:focus {
+      border-radius: 0px !important;
+      background-color: #2c2c2c; }
 
 /* ======================================
  * ! Sound Applet

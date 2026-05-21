@@ -5,7 +5,7 @@
 .toggle-switch, .toggle-switch-us, .toggle-switch-intl {
 	@include size(30px, 15px);
 	background-image: url("img/controls/switch.svg");
-	background-color: $border-element;
+	background-color: $window-secondary;
 	background-position: 0px 0px;
 
 	&:checked {

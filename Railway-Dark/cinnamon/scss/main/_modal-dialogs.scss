@@ -122,3 +122,14 @@
 #about-website:hover StLabel {
 	text-decoration: underline;
 }
+
+/* ===================================================================
+ * ! Correção do ícone de espiar senha gigante (Polkit / Root Prompt)
+ * =================================================================== */
+.prompt-dialog-password-entry StIcon.peek-password {
+    icon-size: 16px !important;
+    width: 16px !important;
+    height: 16px !important;
+    padding: 0px !important;
+    margin: 0px !important;
+}

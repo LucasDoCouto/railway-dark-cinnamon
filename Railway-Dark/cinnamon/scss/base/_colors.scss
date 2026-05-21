@@ -30,6 +30,10 @@ $text-danger:  saturate(darken($accent-danger,   6%), 99%);
 
 $border-element: rgba(#000, .2);
 
+$window-border: rgba(#202020, 1);
+$window-background: rgba(#171717, 1);
+$window-secondary: rgba(#2c2c2c, 1);
+
 $accent-element-panel: rgba($theme-color, .88);
 $accent-element: rgba($theme-color, .95);
 @if $opaque-menus {
